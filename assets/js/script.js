@@ -23,6 +23,9 @@ var cityWeather = {
   nextFiveDays: [],
 };
 
+//
+$("#todayDate").text(todayText);
+
 // Show message
 function showMessage(message) {
   //
@@ -149,6 +152,23 @@ function renderWeatherData(data) {
   //
   innerSpanEl = $("<span>");
   innerSpanEl.text(cityWeather.uvIndex);
+  //
+  // https://www.epa.gov/sunsafety/uv-index-scale-0
+  //
+  if (cityWeather.uvIndex <= 2) {
+    //
+    innerSpanEl.addClass("badge bg-success text-white px-4");
+    //
+  } else if (cityWeather.uvIndex <= 7) {
+    //
+    innerSpanEl.addClass("badge bg-warning text-dark px-4");
+    //
+  } else if (cityWeather.uvIndex >= 8) {
+    //
+    innerSpanEl.addClass("badge bg-danger text-white px-4");
+    //
+  }
+  //
   innerSpanEl.appendTo(spanEl);
   //
   spanEl.appendTo(dayDiv);
@@ -248,6 +268,22 @@ function renderForecastData(data) {
     //
     innerSpanEl = $("<span>");
     innerSpanEl.text(cityWeather.nextFiveDays[i].uvIndex);
+    //
+    // https://www.epa.gov/sunsafety/uv-index-scale-0
+    //
+    if (cityWeather.nextFiveDays[i].uvIndex <= 2) {
+      //
+      innerSpanEl.addClass("badge bg-success text-white px-3");
+      //
+    } else if (cityWeather.nextFiveDays[i].uvIndex <= 7) {
+      //
+      innerSpanEl.addClass("badge bg-warning text-dark px-3");
+      //
+    } else if (cityWeather.nextFiveDays[i].uvIndex >= 8) {
+      //
+      innerSpanEl.addClass("badge bg-danger text-white px-3");
+      //
+    }
     innerSpanEl.appendTo(spanEl);
     //
     spanEl.appendTo(dayDiv);
@@ -392,9 +428,19 @@ function getWeatherData() {
 // Initialize dashbaord
 function initializeDashboard() {
   //
-  $("#todayDate").text(todayText);
-  //
-  getCoordinates();
+  cityWeather = {
+    date: "",
+    cityName: "",
+    latitude: "",
+    longitude: "",
+    weatherIcon: "",
+    weatherDescription: "",
+    temperature: "",
+    wind: "",
+    humidity: "",
+    uvIndex: "",
+    nextFiveDays: [],
+  };
   //
 }
 
@@ -402,9 +448,12 @@ function initializeDashboard() {
 searchBtn.on("click", function () {
   //
   event.preventDefault();
+  initializeDashboard();
   getCoordinates();
   //
 });
 
 // Rock & Roll
 initializeDashboard();
+getCoordinates();
+//
