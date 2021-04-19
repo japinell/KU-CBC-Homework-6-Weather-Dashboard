@@ -3,6 +3,7 @@ const API_SERVER = "http://api.openweathermap.org/";
 const API_WEATHER_END_POINT = "data/2.5/weather";
 const API_ONECALL_END_POINT = "data/2.5/onecall";
 const API_KEY = "9dc0ecf3100ca1f98d7b3462ccb6b3df";
+const FORECAST_DAYS = 5; // 1 - 7
 const searchBtn = $("#searchButton");
 
 // Variables
@@ -26,7 +27,7 @@ var cityWeather = {
 function showMessage(message) {
   //
   var pEl = $("#statusMessage");
-  //pEl.addClass("text-success").text(message);
+  pEl.addClass("text-danger").text(message);
   pEl.text(message);
   //
   // Wait 1.5 seconds
@@ -66,7 +67,7 @@ function getWeatherIcon(icon) {
 function renderWeatherData(data) {
   //
   var weatherDiv = $("#weather");
-  var spanEl, innerSpanEl, iconEl, dayDiv;
+  var spanEl, innerSpanEl, iconEl, tooltipEl, dayDiv;
   //
   // Today's forecast
   //
@@ -89,11 +90,17 @@ function renderWeatherData(data) {
   iconEl.addClass("text-white");
   iconEl.attr("src", getWeatherIcon(cityWeather.weatherIcon));
   iconEl.attr("alt", cityWeather.weatherDescription);
-  iconEl.attr("data-bs-toggle", "tooltip");
-  iconEl.attr("data-bs-placement", "right");
-  iconEl.attr("data-bs-html", "true");
-  iconEl.attr("title", cityWeather.weatherDescription);
+  //   iconEl.attr("data-bs-toggle", "tooltip");
+  //   iconEl.attr("data-bs-placement", "right");
+  //   iconEl.attr("data-bs-html", "true");
+  //   iconEl.attr("title", cityWeather.weatherDescription);
   iconEl.appendTo(innerSpanEl);
+  //
+  tooltipEl = $("<span>");
+  tooltipEl.addClass("h6 text-capitalize font-italic");
+  tooltipEl.text(cityWeather.weatherDescription);
+  tooltipEl.appendTo(innerSpanEl);
+  //
   innerSpanEl.appendTo(spanEl);
   //
   spanEl.appendTo(dayDiv);
@@ -154,18 +161,18 @@ function renderWeatherData(data) {
 function renderForecastData(data) {
   //
   var forecastDiv = $("#forecast");
-  var spanEl, innerSpanEl, iconEl, dayDiv;
+  var spanEl, innerSpanEl, iconEl, tooltipEl, dayDiv;
   //
   // Next five day's forecast (Day 1)
   //
   forecastDiv.empty();
   //
   dayDiv = $("<div>");
-  dayDiv.addClass("col-12 h4 d-block text-centered");
-  dayDiv.text("5-Day Forecast:");
+  dayDiv.addClass("col-12 h4 d-block text-center");
+  dayDiv.text(FORECAST_DAYS + "-Day Forecast:");
   dayDiv.appendTo(forecastDiv);
   //
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < FORECAST_DAYS; i++) {
     //
     dayDiv = $("<div>");
     dayDiv.addClass("card p-3 card-custom");
@@ -184,11 +191,17 @@ function renderForecastData(data) {
     iconEl.addClass("text-white");
     iconEl.attr("src", getWeatherIcon(cityWeather.nextFiveDays[i].weatherIcon));
     iconEl.attr("alt", cityWeather.nextFiveDays[i].weatherDescription);
-    iconEl.attr("data-bs-toggle", "tooltip");
-    iconEl.attr("data-bs-placement", "right");
-    iconEl.attr("data-bs-html", "true");
-    iconEl.attr("title", cityWeather.nextFiveDays[i].weatherDescription);
+    // iconEl.attr("data-bs-toggle", "tooltip");
+    // iconEl.attr("data-bs-placement", "right");
+    // iconEl.attr("data-bs-html", "true");
+    // iconEl.attr("title", cityWeather.nextFiveDays[i].weatherDescription);
     iconEl.appendTo(spanEl);
+    //
+    tooltipEl = $("<span>");
+    tooltipEl.addClass("h6 text-capitalize font-italic");
+    tooltipEl.text(cityWeather.nextFiveDays[i].weatherDescription);
+    tooltipEl.appendTo(spanEl);
+    //
     spanEl.appendTo(dayDiv);
     //
     // Temperature
@@ -339,19 +352,19 @@ function getWeatherData() {
       };
       //
       cityWeather.weatherIcon = data.current.weather[0].icon;
-      cityWeather.weatherDescription = data.current.weather[0].main;
+      cityWeather.weatherDescription = data.current.weather[0].description;
       cityWeather.temperature = data.current.temp;
       cityWeather.wind = data.current.wind_speed;
       cityWeather.humidity = data.current.humidity;
       cityWeather.uvIndex = data.current.uvi;
       //
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < FORECAST_DAYS; i++) {
         //
         day = day.add(1, "d");
         dailyForecast = {
           date: day.format("MM/DD/YYYY"),
           weatherIcon: data.daily[i].weather[0].icon,
-          weatherDescription: data.daily[i].weather[0].main,
+          weatherDescription: data.daily[i].weather[0].description,
           temperature: data.daily[i].temp.max,
           wind: data.daily[i].wind_speed,
           humidity: data.daily[i].humidity,
