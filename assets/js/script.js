@@ -137,6 +137,14 @@ function renderWeatherData(data) {
   //
   spanEl.appendTo(weatherDiv);
   //
+}
+
+// Render forecast data
+function renderForecastData(data) {
+  //
+  var forecastDiv = $("#forecast");
+  var spanEl, innerSpanEl, iconEl, dayDiv;
+  //
   // Next five day's forecast (Day 1)
   //
   forecastDiv.empty();
@@ -340,6 +348,7 @@ function getWeatherData() {
       }
       //
       renderWeatherData(data);
+      renderForecastData(data);
       //
     })
     .catch(function (error) {
