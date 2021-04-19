@@ -25,7 +25,8 @@
     <!-- Header -->
     <div class="container header">
       <p class="h1 text-center">Weather Dashboard</p>
-      <p id="todayDate" class="h3 text-center pb-2">04/18/2021</p>
+      <p id="todayDate" class="h3 text-center"></p>
+      <p id="statusMessage" class="h6 text-center text-white font-italic pb-2"></p>
     </div>
     <!-- End of Header -->
     <!-- Main -->
@@ -36,9 +37,10 @@
           <form>
             <div class="mb-3">
               <label for="searchText" class="form-label">City:</label>
-              <input type="input" class="form-control" id="searchText" />
+              <input id="searchText" type="input" class="form-control" placeholder="Springfield,MA,US"/>
+              <small class="form-text font-italic text-muted">For example: Springfield,MA,US</small>
             </div>
-            <button type="submit" class="btn btn-primary primary-background">
+            <button id="searchButton" type="submit" class="btn btn-primary primary-background">
               Submit
             </button>
           </form>
@@ -48,11 +50,11 @@
         <div class="col-8">
             <!-- City Weather Information -->
             <div class="row weather">
-                <span class="h4 d-block"><span id="cityText">Overland Park </span><span id="weatherIcon">Icon here</span></h3>
-                <span class="h5 d-block">Temperature: <span id="weatherTemperature">75F</span></span>
-                <span class="h5 d-block">Wind: <span id="weatherWind">6.67 MPH</span></span>
-                <span class="h5 d-block">Humidity: <span id="weatherHumidity">46%</span></span>
-                <span class="h5 d-block">UV Index: <span id="weatherUVIndex">0.47</span></span>
+                <span id="cityText" class="col-12 h4 text-center"></span>
+                <span class="col-12 h5">Temperature: <span id="weatherTemperature"></span></span>
+                <span class="col-12 h5">Wind: <span id="weatherWind"></span></span>
+                <span class="col-12 h5">Humidity: <span id="weatherHumidity"></span></span>
+                <span class="col-12 h5">UV Index: <span id="weatherUVIndex"></span></span>
             </div>
             <!-- End of City Weather Information -->
             <!-- Forecast Information -->
