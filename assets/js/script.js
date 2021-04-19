@@ -388,7 +388,7 @@ function getWeatherData() {
       };
       //
       cityWeather.weatherIcon = data.current.weather[0].icon;
-      cityWeather.weatherDescription = data.current.weather[0].description;
+      cityWeather.weatherDescription = data.current.weather[0].main;
       cityWeather.temperature = data.current.temp;
       cityWeather.wind = data.current.wind_speed;
       cityWeather.humidity = data.current.humidity;
@@ -400,7 +400,7 @@ function getWeatherData() {
         dailyForecast = {
           date: day.format("MM/DD/YYYY"),
           weatherIcon: data.daily[i].weather[0].icon,
-          weatherDescription: data.daily[i].weather[0].description,
+          weatherDescription: data.daily[i].weather[0].main,
           temperature: data.daily[i].temp.max,
           wind: data.daily[i].wind_speed,
           humidity: data.daily[i].humidity,
