@@ -74,6 +74,7 @@ function renderWeatherData(data) {
   //
   dayDiv = $("<div>");
   dayDiv.addClass("card p-3 card-custom");
+  //   dayDiv.addClass("col-12 card p-3 card-custom");
   //
   // City
   //
@@ -88,6 +89,10 @@ function renderWeatherData(data) {
   iconEl.addClass("text-white");
   iconEl.attr("src", getWeatherIcon(cityWeather.weatherIcon));
   iconEl.attr("alt", cityWeather.weatherDescription);
+  iconEl.attr("data-bs-toggle", "tooltip");
+  iconEl.attr("data-bs-placement", "right");
+  iconEl.attr("data-bs-html", "true");
+  iconEl.attr("title", cityWeather.weatherDescription);
   iconEl.appendTo(innerSpanEl);
   innerSpanEl.appendTo(spanEl);
   //
@@ -179,6 +184,10 @@ function renderForecastData(data) {
     iconEl.addClass("text-white");
     iconEl.attr("src", getWeatherIcon(cityWeather.nextFiveDays[i].weatherIcon));
     iconEl.attr("alt", cityWeather.nextFiveDays[i].weatherDescription);
+    iconEl.attr("data-bs-toggle", "tooltip");
+    iconEl.attr("data-bs-placement", "right");
+    iconEl.attr("data-bs-html", "true");
+    iconEl.attr("title", cityWeather.nextFiveDays[i].weatherDescription);
     iconEl.appendTo(spanEl);
     spanEl.appendTo(dayDiv);
     //
@@ -330,7 +339,7 @@ function getWeatherData() {
       };
       //
       cityWeather.weatherIcon = data.current.weather[0].icon;
-      cityWeather.weatherDescription = data.current.weather[0].description;
+      cityWeather.weatherDescription = data.current.weather[0].main;
       cityWeather.temperature = data.current.temp;
       cityWeather.wind = data.current.wind_speed;
       cityWeather.humidity = data.current.humidity;
@@ -342,7 +351,7 @@ function getWeatherData() {
         dailyForecast = {
           date: day.format("MM/DD/YYYY"),
           weatherIcon: data.daily[i].weather[0].icon,
-          weatherDescription: data.daily[i].weather[0].description,
+          weatherDescription: data.daily[i].weather[0].main,
           temperature: data.daily[i].temp.max,
           wind: data.daily[i].wind_speed,
           humidity: data.daily[i].humidity,
