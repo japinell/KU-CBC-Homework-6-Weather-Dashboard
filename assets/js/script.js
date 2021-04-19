@@ -65,51 +65,96 @@ function getWeatherIcon(icon) {
 // Render weather data
 function renderWeatherData(data) {
   //
-  var cityText;
-  var iconEl;
-  var weatherIcon;
-  var weatherTemp;
-  var weatherWind;
-  var weatherHumidity;
-  var weatherUVIndex;
-  //
+  var weatherDiv = $("#weather");
   var forecastDiv = $("#forecast");
+  var spanEl, innerSpanEl, iconEl, dayDiv;
   //
   // Today's forecast
   //
-  cityText = $("#cityText");
-  weatherTemp = $("#weatherTemperature");
-  weatherWind = $("#weatherWind");
-  weatherHumidity = $("#weatherHumidity");
-  weatherUVIndex = $("#weatherUVIndex");
+  // City
   //
-  cityText.text(cityWeather.cityName);
+  spanEl = $("<span>");
+  spanEl.addClass("col-12 h4 text-center");
+  spanEl.text(cityWeather.cityName);
+  //
+  // Icon
+  //
+  innerSpanEl = $("<span>");
   iconEl = $("<img>");
+  iconEl.addClass("text-white");
   iconEl.attr("src", getWeatherIcon(cityWeather.weatherIcon));
   iconEl.attr("alt", cityWeather.weatherDescription);
-  iconEl.appendTo(cityText);
+  iconEl.appendTo(innerSpanEl);
+  innerSpanEl.appendTo(spanEl);
   //
-  weatherTemp.text(cityWeather.temperature);
-  weatherWind.text(cityWeather.wind);
-  weatherHumidity.text(cityWeather.humidity);
-  weatherUVIndex.text(cityWeather.uvIndex);
+  spanEl.appendTo(weatherDiv);
+  //
+  // Temperature
+  //
+  spanEl = $("<span>");
+  spanEl.addClass("col-12 h5");
+  spanEl.text("Temperature: ");
+  //
+  innerSpanEl = $("<span>");
+  innerSpanEl.text(cityWeather.temperature + " °F");
+  innerSpanEl.appendTo(spanEl);
+  //
+  spanEl.appendTo(weatherDiv);
+  //
+  // Wind speed
+  //
+  spanEl = $("<span>");
+  spanEl.addClass("col-12 h5");
+  spanEl.text("Wind: ");
+  //
+  innerSpanEl = $("<span>");
+  innerSpanEl.text(cityWeather.wind + " MPH");
+  innerSpanEl.appendTo(spanEl);
+  //
+  spanEl.appendTo(weatherDiv);
+  //
+  // Humidity
+  //
+  spanEl = $("<span>");
+  spanEl.addClass("col-12 h5");
+  spanEl.text("Humidity: ");
+  //
+  innerSpanEl = $("<span>");
+  innerSpanEl.text(cityWeather.humidity + " %");
+  innerSpanEl.appendTo(spanEl);
+  //
+  spanEl.appendTo(weatherDiv);
+  //
+  // UV Index
+  //
+  spanEl = $("<span>");
+  spanEl.addClass("col-12 h5");
+  spanEl.text("UV Index: ");
+  //
+  innerSpanEl = $("<span>");
+  innerSpanEl.text(cityWeather.uvIndex);
+  innerSpanEl.appendTo(spanEl);
+  //
+  spanEl.appendTo(weatherDiv);
   //
   // Next five day's forecast (Day 1)
   //
-  var dayDiv;
-  var spanEl, innerSpanEl, iconEl;
-  //
   forecastDiv.empty();
+  //
+  dayDiv = $("<div>");
+  dayDiv.addClass("col-12 h4 d-block text-centered");
+  dayDiv.text("5-Day Forecast:");
+  dayDiv.appendTo(forecastDiv);
   //
   for (var i = 0; i < 5; i++) {
     //
     dayDiv = $("<div>");
-    dayDiv.addClass("card px-3 card-custom");
+    dayDiv.addClass("card p-3 card-custom");
     //
     // Date
     //
     spanEl = $("<span>");
-    spanEl.addClass("h6 d-block");
+    spanEl.addClass("d-block");
     spanEl.text(cityWeather.nextFiveDays[i].date);
     spanEl.appendTo(dayDiv);
     //
@@ -126,7 +171,7 @@ function renderWeatherData(data) {
     // Temperature
     //
     spanEl = $("<span>");
-    spanEl.addClass("h6 d-block");
+    spanEl.addClass("d-block");
     spanEl.text("Temperature: ");
     //
     innerSpanEl = $("<span>");
@@ -138,7 +183,7 @@ function renderWeatherData(data) {
     // Wind speed
     //
     spanEl = $("<span>");
-    spanEl.addClass("h6 d-block");
+    spanEl.addClass("d-block");
     spanEl.text("Wind: ");
     //
     innerSpanEl = $("<span>");
@@ -150,7 +195,7 @@ function renderWeatherData(data) {
     // Humidity
     //
     spanEl = $("<span>");
-    spanEl.addClass("h6 d-block");
+    spanEl.addClass("d-block");
     spanEl.text("Humidity: ");
     //
     innerSpanEl = $("<span>");
@@ -162,7 +207,7 @@ function renderWeatherData(data) {
     // UV Index
     //
     spanEl = $("<span>");
-    spanEl.addClass("h6 d-block");
+    spanEl.addClass("d-block");
     spanEl.text("UV Index: ");
     //
     innerSpanEl = $("<span>");
@@ -174,6 +219,7 @@ function renderWeatherData(data) {
     dayDiv.appendTo(forecastDiv);
     //
   }
+  //
 }
 
 // Get latitude/longitude coordinates
@@ -311,7 +357,7 @@ function initializeDashboard() {
   //
   $("#todayDate").text(todayText);
   //
-  //getWeatherData();
+  getCoordinates();
   //
 }
 

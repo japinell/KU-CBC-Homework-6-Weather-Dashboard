@@ -24,8 +24,8 @@
   <body>
     <!-- Header -->
     <div class="container header">
-      <p class="h1 text-center">Weather Dashboard</p>
-      <p id="todayDate" class="h3 text-center"></p>
+      <p class="h1 text-center text-dark">Weather Dashboard</p>
+      <p id="todayDate" class="h3 text-center text-dark"></p>
       <p id="statusMessage" class="h6 text-center text-white font-italic pb-2"></p>
     </div>
     <!-- End of Header -->
@@ -49,19 +49,16 @@
         <!-- Weather/Forecast -->
         <div class="col-8">
             <!-- City Weather Information -->
-            <div class="row weather">
-                <span id="cityText" class="col-12 h4 text-center"></span>
-                <span class="col-12 h5">Temperature: <span id="weatherTemperature"></span></span>
-                <span class="col-12 h5">Wind: <span id="weatherWind"></span></span>
-                <span class="col-12 h5">Humidity: <span id="weatherHumidity"></span></span>
-                <span class="col-12 h5">UV Index: <span id="weatherUVIndex"></span></span>
+            <div class="row d-flex flex-row justify-content-around weather" id="weather">
+                <!-- Daily wheater -->
+                <!-- Built dynamically -->
+                <!-- End of Daily weather -->
             </div>
             <!-- End of City Weather Information -->
             <!-- Forecast Information -->
-            <div class="row d-flex flex-row justify-content-around forecast" id="forecast">    
-                <div class="col-12 h4 d-block text-centered">5-Day Forecast:</div>
+            <div class="row d-flex flex-row justify-content-around forecast" id="forecast">
                 <!-- Days -->
-                <!-- Build dynamically -->
+                <!-- Built dynamically -->
                 <!-- End of Days -->
             </div>
             <!-- End of Forecast Information -->

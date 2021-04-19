@@ -1,6 +1,8 @@
 :root {
-  --primary-color: #364a78;
-  --header-background: #364a78;
+  --primary-color: #87ceeb;
+  --header-background: #87ceeb;
+  /* --header-background: #87ceeb; */
+  /* --header-background: #eba286; */
 }
 
 .header {
@@ -36,7 +38,7 @@
 
 .card-custom {
   background-color: var(--primary-color);
-  color: white;
+  color: black;
   margin: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
