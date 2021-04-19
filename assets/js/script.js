@@ -66,10 +66,14 @@ function getWeatherIcon(icon) {
 function renderWeatherData(data) {
   //
   var weatherDiv = $("#weather");
-  var forecastDiv = $("#forecast");
   var spanEl, innerSpanEl, iconEl, dayDiv;
   //
   // Today's forecast
+  //
+  weatherDiv.empty();
+  //
+  dayDiv = $("<div>");
+  dayDiv.addClass("card p-3 card-custom");
   //
   // City
   //
@@ -87,7 +91,7 @@ function renderWeatherData(data) {
   iconEl.appendTo(innerSpanEl);
   innerSpanEl.appendTo(spanEl);
   //
-  spanEl.appendTo(weatherDiv);
+  spanEl.appendTo(dayDiv);
   //
   // Temperature
   //
@@ -99,7 +103,7 @@ function renderWeatherData(data) {
   innerSpanEl.text(cityWeather.temperature + " °F");
   innerSpanEl.appendTo(spanEl);
   //
-  spanEl.appendTo(weatherDiv);
+  spanEl.appendTo(dayDiv);
   //
   // Wind speed
   //
@@ -111,7 +115,7 @@ function renderWeatherData(data) {
   innerSpanEl.text(cityWeather.wind + " MPH");
   innerSpanEl.appendTo(spanEl);
   //
-  spanEl.appendTo(weatherDiv);
+  spanEl.appendTo(dayDiv);
   //
   // Humidity
   //
@@ -123,7 +127,7 @@ function renderWeatherData(data) {
   innerSpanEl.text(cityWeather.humidity + " %");
   innerSpanEl.appendTo(spanEl);
   //
-  spanEl.appendTo(weatherDiv);
+  spanEl.appendTo(dayDiv);
   //
   // UV Index
   //
@@ -135,7 +139,9 @@ function renderWeatherData(data) {
   innerSpanEl.text(cityWeather.uvIndex);
   innerSpanEl.appendTo(spanEl);
   //
-  spanEl.appendTo(weatherDiv);
+  spanEl.appendTo(dayDiv);
+  //
+  dayDiv.appendTo(weatherDiv);
   //
 }
 
