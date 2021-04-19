@@ -65,23 +65,66 @@ function getWeatherIcon(icon) {
 // Render weather data
 function renderWeatherData(data) {
   //
-  var cityText = $("#cityText");
-  var iconURL = $("<img>");
-  var weatherTemp = $("#weatherTemperature");
-  var weatherWind = $("#weatherWind");
-  var weatherHumidity = $("#weatherHumidity");
-  var weatherUVIndex = $("#weatherUVIndex");
+  var cityText;
+  var iconEl;
+  var weatherIcon;
+  var weatherTemp;
+  var weatherWind;
+  var weatherHumidity;
+  var weatherUVIndex;
+  var dateText;
+  var weatherDate;
+  //
+  var forecastDiv = $("#forecast");
+  //
+  // Today's forecast
+  //
+  cityText = $("#cityText");
+  weatherTemp = $("#weatherTemperature");
+  weatherWind = $("#weatherWind");
+  weatherHumidity = $("#weatherHumidity");
+  weatherUVIndex = $("#weatherUVIndex");
   //
   cityText.text(cityWeather.cityName);
-  iconURL.attr("src", getWeatherIcon(cityWeather.weatherIcon));
-  iconURL.attr("alt", cityWeather.weatherDescription);
-  iconURL.appendTo(cityText);
+  iconEl = $("<img>");
+  iconEl.attr("src", getWeatherIcon(cityWeather.weatherIcon));
+  iconEl.attr("alt", cityWeather.weatherDescription);
+  iconEl.appendTo(cityText);
   //
   weatherTemp.text(cityWeather.temperature);
   weatherWind.text(cityWeather.wind);
   weatherHumidity.text(cityWeather.humidity);
   weatherUVIndex.text(cityWeather.uvIndex);
   //
+  // Next five day's forecast (Day 1)
+  //
+  weatherDate = $("#forecastDate1");
+  weatherIcon = $("#forecastIcon1");
+  weatherTemp = $("#forecastTemperature1");
+  weatherWind = $("#forecastWind1");
+  weatherHumidity = $("#forecastHumidity1");
+  weatherUVIndex = $("#forecastUVIndex1");
+  //
+  console.log(cityWeather);
+  //
+  weatherDate.text(cityWeather.nextFiveDays[0].date);
+  //
+  iconEl = $("<img>");
+  iconEl.attr("src", getWeatherIcon(cityWeather.nextFiveDays[0].weatherIcon));
+  iconEl.attr("alt", cityWeather.nextFiveDays[0].weatherDescription);
+  iconEl.appendTo(weatherIcon);
+  //
+  weatherTemp.text(cityWeather.nextFiveDays[0].temperature);
+  weatherWind.text(cityWeather.nextFiveDays[0].wind);
+  weatherHumidity.text(cityWeather.nextFiveDays[0].humidity);
+  weatherUVIndex.text(cityWeather.nextFiveDays[0].uvIndex);
+  //
+  // Day 2
+  //
+  for (var i = 1; i < 2; i++) {
+    //
+    //
+  }
 }
 
 // Get latitude/longitude coordinates
@@ -200,8 +243,6 @@ function getWeatherData() {
         cityWeather.nextFiveDays.push(dailyForecast);
         //
       }
-      //
-      console.log(cityWeather);
       //
       renderWeatherData(data);
       //
