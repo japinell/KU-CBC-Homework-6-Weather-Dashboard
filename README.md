@@ -76,7 +76,7 @@ The following technologies for web development were used to build the applicatio
 
 To build the general structure of the application
 
-### CSS (4.6%)
+### CSS (4%)
 
 `Bootstrap`, custom `CSS`, and `OpenWeather Icons` to style the application elements
 
