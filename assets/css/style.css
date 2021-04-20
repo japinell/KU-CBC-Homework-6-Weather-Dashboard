@@ -20,20 +20,20 @@
 
 .search-form {
   border: 1px dashed var(--primary-color);
-  padding: 15px;
+  /* padding: 15px; */
 }
 
 .weather {
   border: 1px dashed var(--primary-color);
-  margin-left: 5px;
-  padding: 15px;
+  /* margin-left: 5px; */
+  /* padding: 15px; */
 }
 
 .forecast {
   border: 1px dashed var(--primary-color);
-  margin-top: 15px;
-  margin-left: 5px;
-  padding: 15px;
+  /* margin-top: 15px; */
+  /* margin-left: 5px; */
+  /* padding: 15px; */
 }
 
 .card-custom {
