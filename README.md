@@ -56,15 +56,15 @@ Weather information is displayed using visual elements like cards, icons, and im
 
 When the application loads, it searches for a JSON object of last cities saved to localStorage.
 
-> If cities are found, the application retrieves the City Name, the Latitude, and the Longitude of the first of these cities, and uses that data to call the **OpenWeather One Call API** to retrieve current weather and forecast for that city by passing its _latitude_, _longitude_, and an _API key_ along with other query parameters to return only the datasets needed (_current_ weather and _daily_ forecast).
+> If cities are found, the application retrieves the city name, the latitude, and the longitude of the first of these cities, and uses that data to call the `OpenWeather One Call API` to retrieve current weather and forecast for that city by passing its _latitude_, _longitude_, and an _API key_ along with other query parameters to return only the datasets needed (_current_ weather and _daily_ forecast).
 
-> If no cities are found, the application searches for the latitude and longitude coordinates for _Overland Park_ using the **Weather API**, and then, the OpenWeather One Call API as described above.
+> If no cities are found, the application searches for the latitude and longitude coordinates for Overland Park using the `Weather API`, and then, the `OpenWeather One Call API` as described above.
 
 The API server and corresponding end points for Weather and One Call APIs are defined as global parameters to the application.
 
-Data retrieved from these API calls are stored in an object holding the Date, City Name, Latitude, Longitude, Weather Icon (URL), Weather Description, Temperature, Wind, Humidity, UV Index, and an array containing the forecast for the next five days.
+Data retrieved from these API calls are stored in an object holding the date, city name, latitude, longitude, weather icon (URL), weather description, temperature, wind, humidity, UV index, and an array containing the forecast for the next five days.
 
-Next, these data are used to render the Weather Dashboard dynamically by using **jQuery** and **Bootstrap** and **CSS** classes.
+Next, these data are used to render the Weather Dashboard dynamically by using `jQuery` and `Bootstrap` and `CSS` classes.
 
 The application was built with a mobile-first mindset. It is **responsive** to small, medium, large, and extra-large screen sizes. Cards are rearranged for display according to the screen size.
 
@@ -78,10 +78,10 @@ To build the general structure of the application
 
 ### CSS (4.6%)
 
-**Bootstrap**, custom **CSS**, and **OpenWeather Icons** to style the application elements
+`Bootstrap`, custom `CSS`, and `OpenWeather Icons` to style the application elements
 
 ### JavaScript (76%)
 
-**jQuery** for dynamically rendering the weather dashboard elements, and reading and writing data from/to them. It also uses **DayJS** to parse, validate, manipulate, and display dates and times. Cards are manipulated with JQuery and styled with **Bootstrap** and **CSS** when/after they are created.
+`jQuery` for dynamically rendering the weather dashboard elements, and reading and writing data from/to them. It also uses `DayJS` to parse, validate, manipulate, and display dates and times. Cards are manipulated with JQuery and styled with `Bootstrap` and `CSS` when/after they are created.
 
-The application uses an array of objects to store data for the last cities searched, an object to store weather and forecast data, functions to render the data, and helper functions to read and write from/to localStorage to persist the cities as a **JSON** object, handle the user interaction, and style the dashboard.
+The application uses an array of objects to store data for the last cities searched, an object to store weather and forecast data, functions to render the data, and helper functions to read and write from/to localStorage to persist the cities as a `JSON` object, handle the user interaction, and style the dashboard.
