@@ -273,7 +273,7 @@ function renderForecastData() {
       //
       innerSpanEl.addClass("badge bg-warning text-dark px-3");
       //
-    } else if (cityWeather.fiveDaysForecast[i].uvIndex >= 8) {
+    } else if (cityWeather.fiveDaysForecast[i].uvIndex > 7) {
       //
       innerSpanEl.addClass("badge bg-danger text-white px-3");
       //
