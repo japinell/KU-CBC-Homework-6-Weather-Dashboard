@@ -36,6 +36,8 @@ The following image shows the web application's appearance and functionality:
 
 ## Completed Work
 
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Overland Park,KS,US and Managua,Nicaragua.](./assets/images/completed.png)
+
 URL of the deployed application:
 
 https://japinell.github.io/KU-CBC-Homework-6-Weather-Dashboard/
