@@ -1,5 +1,5 @@
 // Constants
-const API_SERVER = "http://api.openweathermap.org/";
+const API_SERVER = "https://api.openweathermap.org/";
 const API_WEATHER_END_POINT = "data/2.5/weather";
 const API_ONECALL_END_POINT = "data/2.5/onecall";
 const API_KEY = "9dc0ecf3100ca1f98d7b3462ccb6b3df";
@@ -513,7 +513,7 @@ function renderLastSearchButtons() {
     buttonEl.attr("cityName", lastSearchCities[i].cityName);
     buttonEl.attr("latitude", lastSearchCities[i].latitude);
     buttonEl.attr("longitude", lastSearchCities[i].longitude);
-    buttonEl.addClass("btn btn-link");
+    buttonEl.addClass("btn btn-link text-white");
     buttonEl.text(lastSearchCities[i].cityName);
     //
     buttonEl.appendTo(lastSearchCitiesDiv);

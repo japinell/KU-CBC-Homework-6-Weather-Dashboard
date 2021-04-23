@@ -19,6 +19,9 @@
 }
 
 .main {
+  /* 
+  Photo by <a href="https://unsplash.com/@ikasalovic?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Igor Kasalovic</a> on <a href="https://unsplash.com/s/photos/sunrise?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  */
   background-image: url("../images/sunrise.jpg");
   background-size: cover;
   background-position: center;
